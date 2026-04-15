@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luma — Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-deep:   #C0266A;
+    --pink-mid:    #E03D84;
+    --pink-soft:   #F472B6;
+    --pink-pale:   #FCE7F3;
+    --pink-blush:  #FDF2F8;
+    --peach:       #FADADD;
+    --cream:       #FFF8FB;
+    --text-dark:   #3D1A2E;
+    --text-mid:    #7A3D5A;
+    --text-soft:   #B06090;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 60px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Background blobs */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::before {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, #F9C8E0 0%, transparent 70%);
+    top: -100px; right: -100px;
+    opacity: 0.6;
+  }
+  body::after {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, #FCE4EF 0%, transparent 70%);
+    bottom: 0; left: -80px;
+    opacity: 0.5;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 36px;
+    margin-bottom: 8px;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 4px;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--pink-deep) 0deg,
+      var(--pink-soft) 120deg,
+      #FFB3D1 240deg,
+      var(--pink-deep) 360deg
+    );
+    animation: spin 6s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .avatar-bg {
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--cream);
+    z-index: 1;
+  }
+
+  .avatar-img {
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 10%;
+    z-index: 2;
+  }
+
+  .handle {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-soft);
+    letter-spacing: 0.04em;
+    margin-top: 14px;
+  }
+
+  .name {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-top: 4px;
+  }
+
+  .bio {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-mid);
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.5;
+    max-width: 280px;
+  }
+
+  /* ── DIVIDER ── */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 24px 0 12px;
+  }
+  .section-title span {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pink-mid);
+    white-space: nowrap;
+  }
+  .section-title::before,
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #F0B8D4, transparent);
+  }
+
+  /* ── LINKS ── */
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1.5px solid #F5C8E0;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    box-shadow: 0 2px 8px rgba(192,38,106,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(253,226,240,0.4) 100%);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(192,38,106,0.15);
+    border-color: var(--pink-mid);
+  }
+  .link-btn:hover::before { opacity: 1; }
+  .link-btn:active { transform: translateY(0); }
+
+  .link-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .icon-pink   { background: #FFE4F0; }
+  .icon-peach  { background: #FFE8D6; }
+  .icon-lilac  { background: #EFE4FF; }
+  .icon-mint   { background: #E0F5EE; }
+  .icon-sky    { background: #E0F0FF; }
+
+  .link-text {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+  .link-text strong { font-size: 14px; font-weight: 800; color: var(--text-dark); }
+  .link-text small  { font-size: 11px; font-weight: 600; color: var(--text-soft); margin-top: 1px; }
+
+  .link-arrow {
+    margin-left: auto;
+    color: var(--pink-soft);
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  /* ── FEATURED / DESTAQUE ── */
+  .link-btn.featured {
+    background: linear-gradient(135deg, #C0266A 0%, #E03D84 100%);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(192,38,106,0.3);
+  }
+  .link-btn.featured .link-text strong { color: #fff; }
+  .link-btn.featured .link-text small  { color: rgba(255,255,255,0.75); }
+  .link-btn.featured .link-arrow       { color: rgba(255,255,255,0.7); }
+  .link-btn.featured:hover {
+    box-shadow: 0 8px 24px rgba(192,38,106,0.4);
+    border-color: transparent;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-soft);
+    opacity: 0.7;
+  }
+
+  /* ── ENTRANCE ANIMATION ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero         { animation: fadeUp 0.5s ease 0.05s forwards; opacity: 0; }
+  .section-title:nth-of-type(1) { animation: fadeUp 0.4s ease 0.2s forwards; opacity: 0; }
+  .section-title:nth-of-type(2) { animation: fadeUp 0.4s ease 0.35s forwards; opacity: 0; }
+  .section-title:nth-of-type(3) { animation: fadeUp 0.4s ease 0.5s forwards; opacity: 0; }
+
+  .link-btn:nth-child(1) { animation: fadeUp 0.4s ease 0.25s forwards; opacity: 0; }
+  .link-btn:nth-child(2) { animation: fadeUp 0.4s ease 0.32s forwards; opacity: 0; }
+  .link-btn:nth-child(3) { animation: fadeUp 0.4s ease 0.39s forwards; opacity: 0; }
+  .link-btn:nth-child(4) { animation: fadeUp 0.4s ease 0.46s forwards; opacity: 0; }
+  .link-btn:nth-child(5) { animation: fadeUp 0.4s ease 0.53s forwards; opacity: 0; }
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <div class="avatar-bg"></div>
+      <img class="avatar-img" src="/mnt/user-data/uploads/foto_luma_base.png" alt="Luma">
+    </div>
+    <span class="handle">@luma.higiene</span>
+    <h1 class="name">Luma 🌸</h1>
+    <p class="bio">Sua companheira de higiene íntima e cuidados femininos 💕</p>
+  </div>
+
+  <!-- HIGIENE ÍNTIMA -->
+  <div class="section-title"><span>Higiene Íntima</span></div>
+
+  <a class="link-btn" href="https://s.shopee.com.br/8ASA2zis2r" target="_blank" rel="noopener">
+    <div class="link-icon icon-pink">🧴</div>
+    <div class="link-text">
+      <strong>Sabonete pH balanceado — Nivea</strong>
+      <small>Para uso diário, sem agredir a flora vaginal</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/7fVtSlcPUY" target="_blank" rel="noopener">
+    <div class="link-icon icon-peach">🌸</div>
+    <div class="link-text">
+      <strong>Sabonete Floral suave — Dermafeme</strong>
+      <small>Fragrância delicada, fórmula ginecologicamente testada</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/8ASA3kukfV" target="_blank" rel="noopener">
+    <div class="link-icon icon-lilac">💜</div>
+    <div class="link-text">
+      <strong>Alívio de coceira e irritação — Canesten</strong>
+      <small>Para candidíase e desconforto, até 12h de alívio</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/3fzkhbvS7E" target="_blank" rel="noopener">
+    <div class="link-icon icon-mint">🌿</div>
+    <div class="link-text">
+      <strong>Lenços íntimos para a bolsa — Free Wipes</strong>
+      <small>Frescor e cuidado em qualquer lugar</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/2BAwunBZt3" target="_blank" rel="noopener">
+    <div class="link-icon icon-sky">🌙</div>
+    <div class="link-text">
+      <strong>Coletor menstrual + esterilizador — Inciclo</strong>
+      <small>Economize até R$800/ano, reutilizável e sustentável</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <!-- SKINCARE -->
+  <div class="section-title"><span>Skincare</span></div>
+
+  <a class="link-btn featured" href="https://s.shopee.com.br/3B3U696l7z" target="_blank" rel="noopener">
+    <div class="link-icon" style="background:rgba(255,255,255,0.2)">✨</div>
+    <div class="link-text">
+      <strong>Kit Peles Sensíveis completo — Principia</strong>
+      <small>Limpeza + Hidratante + FPS 60 em um só kit</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/5q4FGxh1qu" target="_blank" rel="noopener">
+    <div class="link-icon icon-pink">💧</div>
+    <div class="link-text">
+      <strong>Sérum Niacinamida 10% + Zinco — Principia</strong>
+      <small>Poros, manchas e oleosidade em um sérum</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/6pwmSxqdyp" target="_blank" rel="noopener">
+    <div class="link-icon icon-mint">🫧</div>
+    <div class="link-text">
+      <strong>Gel de limpeza facial — Principia</strong>
+      <small>Limpeza profunda sem ressecar</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/9fGxqICQvC" target="_blank" rel="noopener">
+    <div class="link-icon icon-peach">🧈</div>
+    <div class="link-text">
+      <strong>Creme hidratante facial — Principia</strong>
+      <small>Karité + Glicerina + Niacinamida, pele macia o dia todo</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/2LUN6tcC3n" target="_blank" rel="noopener">
+    <div class="link-icon icon-sky">☀️</div>
+    <div class="link-text">
+      <strong>Protetor Solar FPS 60 — Principia</strong>
+      <small>Leve, não oleoso, para uso diário</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <!-- PRAZER & BEM-ESTAR -->
+  <div class="section-title"><span>Prazer & Bem-Estar</span></div>
+
+  <a class="link-btn" href="https://s.shopee.com.br/W2ivw8Ceb" target="_blank" rel="noopener">
+    <div class="link-icon icon-lilac">🔥</div>
+    <div class="link-text">
+      <strong>Lubrificante íntimo neutro — K-med 2em1</strong>
+      <small>Hot + Ice, conforto e prazer sem irritação</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <a class="link-btn" href="https://s.shopee.com.br/9Ke7S67bCU" target="_blank" rel="noopener">
+    <div class="link-icon icon-pink">💫</div>
+    <div class="link-text">
+      <strong>Gel estimulante — Sugalik</strong>
+      <small>Prazer feminino com gel sugador e vibração</small>
+    </div>
+    <span class="link-arrow">›</span>
+  </a>
+
+  <div class="footer">feito com 💕 pela Luma</div>
+
+</div>
+</body>
+</html>
